@@ -1,0 +1,100 @@
+/* Welcome bubble */
+.welcome-bubble {
+    background: #fce7f3;
+    border-radius: 16px;
+    padding: 16px;
+    margin-bottom: 20px;
+    text-align: center;
+    position: relative;
+}
+
+/* Bubble tail */
+.welcome-bubble::after {
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 10px 10px 0;
+    border-style: solid;
+    border-color: #fce7f3 transparent transparent;
+}
+
+.welcome-bubble h3 {
+    margin: 0;
+    color: #ec407a;
+}
+
+.welcome-bubble p {
+    margin: 6px 0 12px;
+    font-size: 14px;
+}
+
+/* Register button */
+.register-btn {
+    display: inline-block;
+    padding: 8px 18px;
+    background: #ec407a;
+    color: white;
+    border-radius: 999px;
+    font-size: 14px;
+}
+
+.register-btn:hover {
+    background: #d81b60;
+}
+
+/* Divider */
+.divider {
+    text-align: center;
+    margin: 20px 0;
+    font-size: 13px;
+    color: #999;
+    position: relative;
+}
+
+.divider::before,
+.divider::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    width: 30%;
+    height: 1px;
+    background: #f3c1d9;
+}
+
+.divider::before {
+    left: 0;
+}
+
+.divider::after {
+    right: 0;
+}
+
+/* Social login */
+.social-login {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.social {
+    padding: 10px;
+    border-radius: 999px;
+    border: 1px solid #eee;
+    background: #fff;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.social.google:hover {
+    border-color: #db4437;
+}
+
+.social.facebook:hover {
+    border-color: #1877f2;
+}
+
+.social.apple:hover {
+    border-color: #000;
+}

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Create Account</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <div class="login-container">
+
+        <!-- Welcome bubble -->
+        <div class="welcome-bubble">
+            <h3>Hey there 💕</h3>
+            <p>Let’s get you set up</p>
+        </div>
+
+        <h2>Create Account</h2>
+
+        <form method="POST">
+            <input type="text" name="username" placeholder="Username" required />
+            <input type="password" name="password" placeholder="Password" required />
+            <input type="password" name="confirm_password" placeholder="Confirm password" required />
+            <button type="submit">Register</button>
+        </form>
+
+        <p>
+            Already have an account?
+            <a href="/">Login</a>
+        </p>
+
+    </div>
+
+</body>
+
+</html>

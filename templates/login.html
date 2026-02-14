@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login/Register</title>
+    <style>
+        /* Reset & body */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        body {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #000;
+            color: #fff;
+        }
+
+        /* Container */
+        .container {
+            width: 900px;
+            height: 500px;
+            background-color: #111;
+            border-radius: 20px;
+            display: flex;
+            overflow: hidden;
+            box-shadow: 0 0 30px neongreen;
+        }
+
+        /* Left Bubble */
+        .left {
+            flex: 1;
+            background: linear-gradient(145deg, #00ff00, #00cc00);
+            color: #000;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 40px;
+            border-top-left-radius: 20px;
+            border-bottom-left-radius: 20px;
+        }
+
+        .left h1 {
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+        }
+
+        .left p {
+            margin-bottom: 30px;
+            font-size: 1rem;
+        }
+
+        .left button {
+            background: #000;
+            color: #00ff00;
+            border: 2px solid #00ff00;
+            padding: 10px 25px;
+            font-size: 1rem;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .left button:hover {
+            background: #00ff00;
+            color: #000;
+        }
+
+        /* Right Login Form */
+        .right {
+            flex: 1;
+            padding: 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .right h2 {
+            margin-bottom: 30px;
+            font-size: 2rem;
+            color: #00ff00;
+        }
+
+        .right input {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            border: none;
+            background: #222;
+            color: #fff;
+        }
+
+        .right input::placeholder {
+            color: #aaa;
+        }
+
+        .right button {
+            padding: 12px;
+            background: #00ff00;
+            border: none;
+            border-radius: 8px;
+            color: #000;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .right button:hover {
+            background: #00cc00;
+        }
+
+        .social-login {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .social-login button {
+            flex: 1;
+            margin: 0 5px;
+            padding: 10px;
+            background: #111;
+            color: #00ff00;
+            border: 2px solid #00ff00;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .social-login button:hover {
+            background: #00ff00;
+            color: #000;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <!-- Left Welcome Bubble -->
+        <div class="left">
+            <h1>Hey there, Welcome!</h1>
+            <p>Don't have an account?</p>
+            <button onclick="window.location.href='register.html'">Register</button>
+        </div>
+
+        <!-- Right Login Form -->
+        <div class="right">
+            <h2>Login</h2>
+            <input type="text" placeholder="Username">
+            <input type="password" placeholder="Password">
+            <button>Login</button>
+
+            <div class="social-login">
+                <button>Google</button>
+                <button>Facebook</button>
+                <button>Apple</button>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
