@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>Auth</title>
+
+    ```
+    <!-- CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/8b3f7c9d9e.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    ```
+
+</head>
+
+<body>
+
+    <div class="container" id="container">
+
+        ```
+        <!-- LOGIN FORM -->
+        <div class="form-container login-container">
+
+            <form action="/login" method="POST">
+
+                <h2>Login</h2>
+
+                <input type="email" name="email" placeholder="Email" required>
+
+                <input type="password" name="password" placeholder="Password" required>
+
+                <label style="font-size:14px; margin-top:5px;">
+                    <input type="checkbox" name="remember">
+                    Remember Me
+                </label>
+
+                <button class="btn">Login</button>
+
+                <div class="socials">
+                    <i class="fa-brands fa-google"></i>
+                    <i class="fa-brands fa-facebook-f"></i>
+                    <i class="fa-brands fa-apple"></i>
+                </div>
+
+            </form>
+
+        </div>
+
+        <!-- PINK WELCOME PANEL -->
+        <div class="overlay-container">
+
+            <div class="overlay">
+
+                <div class="overlay-panel">
+
+                    <h2>Hey there, Welcome!</h2>
+
+                    <p>Don’t have an account?</p>
+
+                    <button class="ghost" id="register">Register</button>
+
+                </div>
+
+            </div>
+
+        </div>
+        ```
+
+    </div>
+
+    <script>
+
+        const container = document.getElementById('container');
+
+        document.getElementById('register').addEventListener('click', () => {
+            container.classList.add("right-panel-active");
+        });
+
+    </script>
+
+</body>
+
+</html>

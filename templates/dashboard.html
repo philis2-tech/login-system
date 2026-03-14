@@ -3,18 +3,48 @@
 
 <head>
     <title>Dashboard</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        body {
+            margin: 0;
+            font-family: Segoe UI;
+            background: linear-gradient(135deg, #ff4d8d, #ff9ecf);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: white;
+        }
+
+        .card {
+            background: white;
+            color: #ff4d8d;
+            padding: 50px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        a {
+            text-decoration: none;
+            background: #ff4d8d;
+            color: white;
+            padding: 10px 25px;
+            border-radius: 25px;
+        }
+    </style>
 </head>
 
 <body>
 
-    <div class="login-container">
-        <h2>Welcome, {{ user }} 👋</h2>
-        <p>You are logged in.</p>
-
-        <a href="/logout">
-            <button>Logout</button>
-        </a>
+    <div class="card">
+        <h1>Welcome {{ user }} 🎉</h1>
+        <p>You are now logged in.</p>
+        <br>
+        <a href="/">Logout</a>
     </div>
 
 </body>

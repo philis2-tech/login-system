@@ -1,86 +1,112 @@
 from flask import Flask, render_template, request, redirect, url_for, session
 from werkzeug.security import generate_password_hash, check_password_hash
+from datetime import timedelta
 import sqlite3
-import os
+import re
 
 app = Flask(__name__)
-app.secret_key = "supersecretkey"  # used for sessions
-
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-DB_PATH = os.path.join(BASE_DIR, "users.db")
+app.secret_key = "supersecretkey"
+app.permanent_session_lifetime = timedelta(days=7)
 
 
-def get_db():
-    return sqlite3.connect(DB_PATH)
+# ---------------- DATABASE ---------------- #
+
+def get_db_connection():
+    conn = sqlite3.connect('users.db')
+    conn.row_factory = sqlite3.Row
+    return conn
 
 
-def create_table():
-    db = get_db()
-    db.execute("""
+def init_db():
+    conn = get_db_connection()
+    conn.execute('''
         CREATE TABLE IF NOT EXISTS users (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
-            username TEXT UNIQUE,
-            password TEXT
+            email TEXT UNIQUE NOT NULL,
+            password TEXT NOT NULL
         )
-    """)
-    db.commit()
+    ''')
+    conn.commit()
+    conn.close()
 
 
-@app.route("/", methods=["GET", "POST"])
-def login():
-    if request.method == "POST":
-        username = request.form["username"]
-        password = request.form["password"]
+init_db()
 
-        db = get_db()
-        user = db.execute(
-            "SELECT * FROM users WHERE username=?",
-            (username,)
-        ).fetchone()
 
-        if user and check_password_hash(user[2], password):
-            session["user"] = username
-            return redirect(url_for("dashboard"))
-        else:
-            return render_template("login.html", error="Invalid username or password")
+# ---------------- ROUTES ---------------- #
 
-    return render_template("login.html")
+@app.route("/")
+def home():
+    return render_template("auth.html")
 
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
     if request.method == "POST":
-        username = request.form["username"]
-        password = generate_password_hash(request.form["password"])
+        email = request.form["email"]
+        password = request.form["password"]
 
-        db = get_db()
+        # Email validation
+        email_regex = r'^[\w\.-]+@[\w\.-]+\.\w+$'
+        if not re.match(email_regex, email):
+            return "Invalid email format"
+
+        hashed_password = generate_password_hash(password)
+
+        conn = get_db_connection()
         try:
-            db.execute(
-                "INSERT INTO users (username, password) VALUES (?, ?)",
-                (username, password)
+            conn.execute(
+                "INSERT INTO users (email, password) VALUES (?, ?)",
+                (email, hashed_password)
             )
-            db.commit()
-            return redirect(url_for("login"))
+            conn.commit()
         except sqlite3.IntegrityError:
-            return render_template("register.html", error="Username already exists")
+            conn.close()
+            return "Email already registered"
+
+        conn.close()
+        return redirect(url_for("home"))
 
     return render_template("register.html")
+
+
+@app.route("/login", methods=["POST"])
+def login():
+    email = request.form["email"]
+    password = request.form["password"]
+    remember = request.form.get("remember")
+
+    conn = get_db_connection()
+    user = conn.execute(
+        "SELECT * FROM users WHERE email = ?",
+        (email,)
+    ).fetchone()
+    conn.close()
+
+    if user and check_password_hash(user["password"], password):
+        session["user"] = email
+
+        if remember:
+            session.permanent = True
+
+        return redirect(url_for("dashboard"))
+
+    return "Invalid credentials"
 
 
 @app.route("/dashboard")
 def dashboard():
     if "user" not in session:
-        return redirect(url_for("login"))
+        return redirect(url_for("home"))
 
     return render_template("dashboard.html", user=session["user"])
 
 
 @app.route("/logout")
 def logout():
-    session.pop("user", None)
-    return redirect(url_for("login"))
+    session.clear()
+    return redirect(url_for("home"))
 
 
 if __name__ == "__main__":
-    create_table()
     app.run(debug=True)
