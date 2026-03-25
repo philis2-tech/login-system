@@ -1,65 +1,46 @@
 <!DOCTYPE html>
-
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    ```
-    <title>Login</title>
-
-    <!-- Link to external CSS file -->
-    <link rel="stylesheet" href="style.css">
-
-    <!-- Font Awesome icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    ```
-
+    <title>Login UI</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 
 <body>
 
     <div class="container">
 
-        ```
-        <!-- LEFT PANEL -->
-        <div class="overlay">
-            <h1>Hey there, Welcome!</h1>
+        <!-- Left side -->
+        <div class="left">
+            <h1>Hey there,<br>Welcome!</h1>
             <p>Don't have an account?</p>
             <button class="register-btn">Register</button>
         </div>
 
-        <!-- RIGHT PANEL -->
-        <div class="form-container">
-
+        <!-- Right side -->
+        <div class="right">
             <h2>Login</h2>
 
-            <form>
+            <form action="/login" method="POST">
 
-                <input type="email" placeholder="Email" required>
-
-                <input type="password" placeholder="Password" required>
+                <input type="email" name="email" placeholder="Email" required>
+                <input type="password" name="password" placeholder="Password" required>
 
                 <div class="remember">
-                    <input type="checkbox"> Remember Me
+                    <input type="checkbox" name="remember">
+                    <span>Remember Me</span>
                 </div>
 
-                <button class="login-btn">Login</button>
+                <a href="/register">
+                    <button class="register-btn">Register</button>
+                </a>
 
             </form>
 
             <div class="socials">
-                <i class="fa-brands fa-google"></i>
-                <i class="fa-brands fa-facebook-f"></i>
-                <i class="fa-brands fa-apple"></i>
+                <span>G</span>
+                <span>f</span>
+                <span></span>
             </div>
-
         </div>
-        ```
-
-    </div>
-
-</body>
-
-</html>

@@ -37,7 +37,7 @@ init_db()
 
 @app.route("/")
 def home():
-    return render_template("auth.html")
+    return render_template("login.html")
 
 
 @app.route("/register", methods=["GET", "POST"])
