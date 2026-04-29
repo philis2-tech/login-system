@@ -1,0 +1,272 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    height: 100vh;
+    background: #e5e5e5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+
+}
+
+/* MAIN CONTAINER */
+.container {
+    width: 900px;
+    height: 520px;
+    display: flex;
+    border-radius: 25px;
+    overflow: hidden;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+}
+
+/* LEFT PANEL */
+.left {
+    flex: 1;
+    background: linear-gradient(135deg, #ff4b8b, #ff7aa2);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* centers vertically */
+    align-items: center;
+    /* centers horizontally */
+    text-align: center;
+    padding: 40px;
+    position: relative;
+}
+
+/* circle effects */
+.left::before,
+.left::after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.left::before {
+    width: 200px;
+    height: 200px;
+    top: -50px;
+    right: -50px;
+}
+
+.left::after {
+    width: 250px;
+    height: 250px;
+    bottom: -80px;
+    left: -80px;
+}
+
+.left h1 {
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+.left p {
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+/* REGISTER BUTTON */
+.register-btn {
+    padding: 10px 30px;
+    border: 2px solid white;
+    border-radius: 25px;
+    background: transparent;
+    color: white;
+    cursor: pointer;
+}
+
+/* RIGHT PANEL */
+.right {
+    flex: 1;
+    background: #f9f9f9;
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* TITLE */
+.right h2 {
+    color: #ff4b8b;
+    margin-bottom: 20px;
+}
+
+/* INPUTS */
+.right input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: none;
+    border-radius: 10px;
+    background: #e0e0e0;
+}
+
+/* REMEMBER */
+.remember {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+/* LOGIN BUTTON */
+.login-btn {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 25px;
+    background: linear-gradient(135deg, #ff4b8b, #ff7aa2);
+    color: white;
+    cursor: pointer;
+}
+
+/* SOCIALS */
+.socials i {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: white;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.login-btn {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 30px;
+    background: linear-gradient(135deg, #ff4b8b, #ff7aa2);
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 10px;
+    /* IMPORTANT */
+    display: block;
+    /* IMPORTANT */
+}
+
+.login-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(255, 75, 139, 0.4);
+}
+
+.socials {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 25px;
+}
+
+.socials i {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: white;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: 0.3s;
+    font-size: 18px;
+}
+
+.socials i:hover {
+    transform: scale(1.1);
+    background: #ff4b8b;
+    color: white;
+}
+
+.fa-google {
+    color: #DB4437;
+}
+
+.fa-facebook-f {
+    color: #1877F2;
+}
+
+.fa-apple {
+    color: #575252;
+}
+
+.socials i:hover {
+    transform: scale(1.1);
+    opacity: 0.8;
+}
+
+#strength-text {
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+.socials {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 25px;
+    flex-wrap: wrap;
+    /* important for small screens */
+}
+
+.socials a {
+    text-decoration: none;
+}
+
+.socials i {
+    width: 45px;
+    height: 45px;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: white;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: 0.3s;
+}
+
+/* Brand colors */
+.fa-google {
+    color: #DB4437;
+}
+
+.fa-facebook-f {
+    color: #1877F2;
+}
+
+.fa-apple {
+    color: #000;
+}
+
+/* Hover */
+.socials i:hover {
+    transform: scale(1.15);
+}
+
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        width: 90%;
+        height: auto;
+    }
+
+    .left,
+    .right {
+        width: 100%;
+        padding: 30px;
+    }
+}
