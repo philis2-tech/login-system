@@ -232,6 +232,27 @@ def facebook_callback():
     session["user"] = email
     return redirect(url_for('dashboard'))
 
+
+@app.route("/delete-account", methods=["GET", "POST"])
+def delete_account():
+    if request.method == "POST":
+        email = request.form.get("email")
+
+        conn = get_db_connection()
+        conn.execute("DELETE FROM users WHERE email = ?", (email,))
+        conn.commit()
+        conn.close()
+
+        return "Your account has been deleted successfully."
+
+    return """
+    <h2>Delete Your Account</h2>
+    <form method="post">
+        <input type="email" name="email" placeholder="Enter your email" required>
+        <button type="submit">Delete Account</button>
+    </form>
+    """
+
 # ---------------- PASSWORD STRENGTH ---------------- #
 
 
