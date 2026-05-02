@@ -253,6 +253,18 @@ def delete_account():
     </form>
     """
 
+
+@app.route("/privacy")
+def privacy():
+    return """
+    <h2>Privacy Policy</h2>
+    <p>This application collects and stores user email addresses for authentication purposes only.</p>
+    <p>We do not share, sell, or distribute user data to third parties.</p>
+    <p>Users can request deletion of their data at:</p>
+    <a href="/delete-account">Delete Account</a>
+    """
+
+
 # ---------------- PASSWORD STRENGTH ---------------- #
 
 
